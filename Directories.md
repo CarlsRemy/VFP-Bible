@@ -138,4 +138,4 @@ Visual FoxPro permite trabajar directamente con archivos usando handles y contro
 ---
 
 
-[Volver atrás](./Types/Number.md) |  	[Siguiente tema](./Cheats%20Sheet/evaluations.md)
+[Volver atrás](./Types/Number.md) |  	[Siguiente tema](./Data/Cursors.md)

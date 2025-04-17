@@ -112,16 +112,4 @@ Este comando compila el proyecto en un tipo específico de archivo ejecutable o 
 - `_VFP.Caption, _VFP.Visible, _VFP.Height, etc.`   
 Permiten modificar el entorno de ejecución de VFP como si fuera una ventana más.
 
-- `_VFP.Documents`
-
-Colección de los documentos (formularios, prgs, etc.) abiertos en el entorno.
-
-```foxpro
-FOR i = 1 TO _VFP.Documents.Count
-	? _VFP.Documents(i).Name
-ENDFOR
-```
-
-_VFP.DataToClip('TMP',,3)
-
-[Volver atrás](./evaluations.md)
+[Volver atrás](./evaluations.md) | 	[Siguiente tema](./printer.md)

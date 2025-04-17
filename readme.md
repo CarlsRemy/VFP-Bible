@@ -13,8 +13,9 @@ Este es un documento, donde se redantan los comandos, recurso y trucos de VFP, a
 - [Automatización con COM y DLLs](./Dll.md)
 - [Integración con Excel y Word](./word_Excel.md)
 - [Errores Comunes y Soluciones](./Errors.md)
-- [Trucos y Buenas Prácticas](./Cheats%20Sheet/run.md)
-
+- [Funcines Utiles para evaluacines](./Cheats%20Sheet/evaluations.md)
+- [Ejecución de Comandos y Scripts Dinámicos](./Cheats%20Sheet/run.md)
+- [Técnicas de Impresión y Reportes en VFP](./Cheats%20Sheet/printer.md)
 
 # Bibliografia
 

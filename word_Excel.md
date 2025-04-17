@@ -110,3 +110,7 @@ oDoc.SaveAs("C:\documento_final.docx")
 oWord.Quit()
 RELEASE oWord
 ```
+
+---
+
+[Volver atrás](./Dll.md) | 	[Siguiente tema](./Errors.md)
