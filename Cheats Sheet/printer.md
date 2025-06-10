@@ -32,18 +32,32 @@
 
 	⚠️ Esto cambia la impresora por defecto del sistema, así que deberías devolverla luego a la original si no es deseado.
 
-- Enviar archivo PRN directamente a la impresora   
-	
-	Si generas un archivo .PRN, puedes enviarlo directamente:
+- Obtener Nombre de Impresora Predeterminada
+	```FOXPRO
+		DECLARE INTEGER GetDefaultPrinter IN winspool.drv;
+		STRING @pszBuffer, INTEGER @pcchBuffer 
 
-	```foxpro
-		RUN COPY /B "reporte.prn" "\\NombreDePC\NombreDeImpresora"
+		nlength = 256
+		lName = SPACE(nlength)
+
+		lResult  = GetDefaultPrinter(@lName ,nlength )
+
+		IF lResult  !=0
+			lName  = LEFT(lName, nlength -1)
+		ELSE 
+			lName  =""
+		ENDIF  
+
+		RETURN lName 
 	```
+
+
 - Usar PROMPT para mostrar cuadro de diálogo de impresión
 	```foxpro
 		REPORT FORM miReporte TO PRINTER PROMPT NOCONSOLE
 	```
 - Detectar impresora predeterminada
+
 	```foxpro
 		oWMI = GetObject("winmgmts:")
 		colPrinters = oWMI.ExecQuery("Select * From Win32_Printer")
@@ -59,9 +73,14 @@
 	```
 	Ideal para evitar impresiones innecesarias.
 
-- Configurar tamaño de papel desde el FRX  
+- Realizar Corte de Papel
+	```FOXPRO
+		???CHR(27)+CHR(105) 
+	```
 
-
-	Desde el diseñador del reporte, puedes establecer manualmente el tamaño del papel. Alternativamente, puedes modificar el expr del objtype = 1 en el .frx.
+- Abrir Cajon (CAJA REGISTRADORA)
+	```FOXPRO
+		???Chr(27) + Chr(112) + Chr(0)+ Chr(25)+ Chr(250)
+	```
 
 [Volver atrás](./run.md)

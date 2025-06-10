@@ -1,5 +1,9 @@
 ## Funcines para Trabajar con Strings
 
+
+- `SET MEMOWIDTH TO 20`
+Esta no es una funcion de strings peo si permite modificar la longitud de un txt (mem0)
+
 - `StrExtract(cExp, cBegDelim, cEndDelim [, nFlags])`  
 se utiliza para extraer una subcadena de una cadena de texto, delimitada por cadenas específicas de inicio y fin.
 
@@ -16,6 +20,15 @@ se utiliza para extraer una subcadena de una cadena de texto, delimitada por cad
 
 - `STRTRAN(cExp, cBuscar, cReemplazar [, nInicio [, nVeces]])`   
 Reemplaza todas (o algunas) apariciones de una subcadena dentro de otra cadena.
+
+- `MEMLINES(), MLINE(), _MLine`
+Las funciones **MEMLINES()** y **MLINE()** la variable del sistema **_MLINE** le permiten separar un campo de nota o una cadena de caracteres de varias líneas en sus líneas componentes. MEMLINES()le indica cuántas líneas contiene el campo mientras que MLINE()devuelve una línea especificada. _MLINE realiza un seguimiento de qué tan lejos ha llegado en el campo buscando líneas.
+
+```foxpro
+* Uso
+
+
+```
 
 - `AT(cBuscar, cExp [, nOcurrencia])`   
 Devuelve la posición de una subcadena dentro de otra.
