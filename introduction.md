@@ -58,7 +58,6 @@ ENDCASE
 
 #### Sintaxis de For y Scan
 
-
 ```foxpro
 FOR i = 0 TO 45
   ? "Valor de i:", i

@@ -19,15 +19,34 @@ Si Usamos Una Conecion con ODBC:
 lnConn = SQLCONNECT("mi_dsn", "usuario", "clave")
 ```
 
-SQLEXEC
+## SQLEXEC
 
-SQLSTRINGCONNECT
+Ejecuta una sentencia SQL sobre una conexión abierta.
 
-SQLDISCONNECT
+```foxpro
+IF SQLEXEC(nConn, "SELECT * FROM productos", "productosCursor") < 0
+   AERROR(aError)
+   ? "Error al ejecutar consulta: ", aError[2]
+ENDIF
+```
 
-SQLSETPROP
+## SQLSETPROP
+Permite establecer propiedades de la conexión como el modo asincrónico, tiempo de espera, etc.
 
+```foxpro
+SQLSETPROP(nConn, "Asynchronous", .F.)
+SQLSETPROP(nConn, "ConnectTimeout", 15)
+```
 
+## SQLDISCONNECT
+
+Cierra una conexión activa con la base de datos.
+
+```foxpro
+IF SQLDISCONNECT(nConn) = 1
+  ? "Conexión cerrada correctamente"
+ENDIF
+```
 
 ## Conexión a Archivos DBF (locales o en red)
 
