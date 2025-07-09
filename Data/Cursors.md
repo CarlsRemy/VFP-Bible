@@ -58,7 +58,26 @@ CREATE CURSOR mi_cursor (campo1 C(20), campo2 N(5,2))
 INSERT INTO mi_cursor (campo1, campo2) VALUES ("Valor1", 10.50)
 INSERT INTO mi_cursor (campo1, campo2) VALUES ("Valor2", 20.75)
 ```
+### Importar datos con APPEND FROM
 
+	Agrega registros al final de la tabla actualmente seleccionada desde otro archivo.
+
+	```foxpro
+		Select Tmp
+		APPEND FROM mytxt.txt DELIMITED WITH CHARACTER "*"
+	```
+
+- DELIMITED WITH BLANK
+	- Especifica archivos que contienen campos separados por espacios en lugar de comas.
+- DELIMITED WITH TAB
+	- Especifica archivos que contienen campos separados por tabulaciones en lugar de comas.
+
+- CSV
+	- Incluya un archivo CSV para importar datos desde un archivo de valores separados por comas. Un archivo CSV tiene los nombres de campo en la primera línea; estos nombres se ignoran al importar el archivo.
+
+- XLS
+	- Incluya XLS para importar datos desde una hoja de cálculo de Microsoft Excel. Cada columna de la hoja se convierte en un campo de la tabla y cada fila en un registro. Los archivos de hoja de cálculo creados en Microsoft Excel tienen la extensión **.xls**.
+	
 ### Tipos De datos para Cursores y Tablas
 
 - C (Carácter):

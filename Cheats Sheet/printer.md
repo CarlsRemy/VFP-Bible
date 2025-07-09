@@ -1,8 +1,7 @@
 # Técnicas de Impresión y Reportes en VFP
 
 - Forzar la impresora desde código  
-
-	Aunque SET PRINTER TO y SET PRINTER TO NAME se usan para redireccionar la impresora, los reportes .FRX pueden guardar información de la impresora en sus campos TAG y TAG2. Esto puede forzar la salida a una impresora específica incluso si la cambias por código.
+	Los comandos **SET PRINTER TO** y **SET PRINTER TO NAME** permiten redireccionar la salida de impresión, pero los reportes .FRX pueden guardar información de la impresora en los campos TAG y TAG2, lo que puede forzar el uso de una impresora específica, incluso si se cambia por código.
 
 	Solución recomendada:
 
@@ -14,6 +13,43 @@
 
 	Esto limpia la información de impresora incrustada.
 
+## Uso WMI de en VFP
+### Que es WMI ?
+
+
+WMI significa Windows Management Instrumentation, y es una tecnología de Microsoft que permite a los programas y scripts acceder a información administrativa y de configuración del sistema operativo Windows.
+
+###  Acciones comunes con impresoras usando WMI
+
+- Verificación del estado de una impresora usando WMI en VFP
+
+	```foxpro
+		strComputer = "."
+		NomImpresora = UPPER(ALLTRIM(lPrinter))
+
+		TRY
+			objWMIService = GETOBJECT("winmgmts:{impersonationLevel=impersonate}!\\" + strComputer + "\root\cimv2")
+
+			colPrinters = objWMIService.ExecQuery("SELECT * FROM Win32_Printer")
+
+			FOR EACH objPrinter IN colPrinters
+				IF UPPER(ALLTRIM(objPrinter.Name)) == NomImpresora
+
+					* Verifica si el estado de la impresora es "Ocupado" (2) o "Listo" (3)
+					* Y si no está en modo sin conexión (WorkOffline = .F.)
+					IF INLIST(objPrinter.PrinterStatus, 2, 3) AND NOT objPrinter.WorkOffline
+						* La impresora está encendida y disponible
+						Encendida = .T.
+					ENDIF
+					EXIT
+				ENDIF
+			ENDFOR
+		CATCH
+			* Si ocurre un error (por ejemplo, WMI desactivado), se asume que no está disponible
+			Encendida = .F.
+		ENDTRY
+	```
+
 - Obtener lista de impresoras instaladas
 
 	```foxpro
@@ -23,6 +59,17 @@
 			? oPrinter.Name
 		ENDFOR
 	```
+-  Detectar impresora predeterminada
+	```foxpro
+		oWMI = GetObject("winmgmts:")
+		colPrinters = oWMI.ExecQuery("Select * From Win32_Printer")
+		FOR EACH oPrinter IN colPrinters
+			IF oPrinter.Default
+				? "Impresora predeterminada:", oPrinter.Name
+			ENDIF
+		ENDFOR
+	```
+
 - Seleccionar impresora predeterminada por código
 
 	```foxpro
@@ -56,17 +103,7 @@
 	```foxpro
 		REPORT FORM miReporte TO PRINTER PROMPT NOCONSOLE
 	```
-- Detectar impresora predeterminada
 
-	```foxpro
-		oWMI = GetObject("winmgmts:")
-		colPrinters = oWMI.ExecQuery("Select * From Win32_Printer")
-		FOR EACH oPrinter IN colPrinters
-			IF oPrinter.Default
-				? "Impresora predeterminada:", oPrinter.Name
-			ENDIF
-		ENDFOR
-	```
 - Previsualización antes de imprimir
 	```foxpro
 		REPORT FORM miReporte PREVIEW
