@@ -38,6 +38,12 @@ ENDDEFINE
 
 oCliente = CREATEOBJECT("Cliente", "Ana", 25)
 ```
+
+### Limpiar de DLLs de la Memoria
+
+```foxpro
+    CLEAR DLLS [ DLLList ]
+```
 ---
 
 [Volver atrás](./Data/ODBC.md) | 	[Siguiente tema](./word_Excel.md)

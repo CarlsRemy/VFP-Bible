@@ -71,6 +71,9 @@ SHELL "dir"
 - `_VFP.DataToClip()`  
 Copia al portapapeles los datos del área de trabajo actual (puede usarse para exportar datos a Excel, por ejemplo).
 
+- `_VFP.Do(filename)`
+Ejecuta un PRG o procedimiento.
+
 - `_VFP.DoCmd(cComando)`  
 Ejecuta una línea de comando como si la escribieras en la ventana de comandos.
 
