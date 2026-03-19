@@ -7,6 +7,7 @@ Este es un documento, donde se redantan los comandos, recurso y trucos de VFP, a
 - [Introducción a VFP](./introduction.md)
 - [String](./Types/String.md)
 - [Number](./Types/Number.md)
+- [Date](./Types/Date.md)
 - [Manejo de Archivos y Carpetas](./Directories.md)
 - [Cursores y Tablas](./Data/Cursors.md)
 - [Acceso a Datos Remotos (ODBC, SQL)](./Data/ODBC.md)

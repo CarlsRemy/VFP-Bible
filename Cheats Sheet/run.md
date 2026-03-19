@@ -115,4 +115,18 @@ Este comando compila el proyecto en un tipo específico de archivo ejecutable o 
 - `_VFP.Caption, _VFP.Visible, _VFP.Height, etc.`   
 Permiten modificar el entorno de ejecución de VFP como si fuera una ventana más.
 
+- `_VFP.OLERequestPendingTimeout`   
+Permite Inidicar el Tiempo de la App debe esperar respuestas,
+de no inidicarse mostraria una ventada de Error indicando que el mismo continua ocupado. 
+
+- `_VFP.OLEServerBusyTimeout`   
+La cantidad de tiempo que se debe esperar (en milisegundos) antes de generar un error si OLEServerBusyRaiseError es .T. 
+
+- `_VFP.OLEServerBusyRaiseError`   
+Genera un error si una solicitud OLE espera más tiempo que el retardo especificado por OLEServerBusyTimeout.
+
+**Acción del Sistema:** Al agotarse OLEServerBusyTimeout, se lanza un error (generalmente "Server Busy"). Al agotarse OLERequestPendingTimeout, generalmente aparece el diálogo de "Pendiente".
+
+**Propósito:** OLEServerBusyTimeout sirve para evitar bloqueos permanentes cuando el servidor está sobrecargado. OLERequestPendingTimeout mejora la experiencia del usuario (UX) al informar que la aplicación no se ha congelado, sino que está trabajando
+
 [Volver atrás](./evaluations.md) | 	[Siguiente tema](./printer.md)

@@ -29,6 +29,18 @@ Las funciones **MEMLINES()** y **MLINE()** la variable del sistema **_MLINE** le
 
 
 ```
+- `GETWORDCOUNT(cExp, cSeparator)`  
+Devuelve la  Cantidad de paladras que hay en un Enuciado segun el separador indicado.
+
+- `GETWORDNUM(cExp, nCount[, cSeparator])`  
+Para separar palabras en una frase sin usar ALINES():
+```prg
+	lcFrase = "Factura-001-2023"
+	? GETWORDNUM(lcFrase, 2, "-") && Devuelve: "001"
+```
+
+- `REPLICATE(cExp,nCount)`  
+Permite replicar un text N Veces.
 
 - `AT(cBuscar, cExp [, nOcurrencia])`   
 Devuelve la posición de una subcadena dentro de otra.
